@@ -1,0 +1,25 @@
+{
+  "name": "SimpleWorker",
+  "version": "0.1.0",
+  "description": "Inline web workers + promises",
+  "main": "SimpleWorker.js",
+  "keywords": [
+    "promise",
+    "web-workers"
+  ],
+  "authors": [
+    "cdsanchez"
+  ],
+  "license": "MIT",
+  "homepage": "http://cdsanchez.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "q": "~0.9.6"
+  }
+}
