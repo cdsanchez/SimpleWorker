@@ -16,6 +16,7 @@
 }(this, function (Q) {
     var workerSource = (function __workerEnv() {
             var functionRegExp = /^function\s*([a-zA-Z0-9_$]*)\s*\(([a-zA-Z0-9_$,\s]*)\)\s*[^{]*{\s*([\d\D]*)\s*}[^}]*$/gim;
+            var absoluteUrlRegExp = /^https?:/;
 
             function postResult (result) {
                 self.postMessage(result);
@@ -64,7 +65,7 @@
 
     // Transform relative script URLs into absolute URLs
     function getScriptUrl(scriptPath) {
-        if (scriptPath.toLowerCase().indexOf("http") == 0) {
+        if (absoluteUrlRegExp.test(scriptPath)) {
             return scriptPath;
         }
 
