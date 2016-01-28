@@ -16,7 +16,6 @@
 }(this, function (Q) {
     var workerSource = (function __workerEnv() {
             var functionRegExp = /^function\s*([a-zA-Z0-9_$]*)\s*\(([a-zA-Z0-9_$,\s]*)\)\s*[^{]*{\s*([\d\D]*)\s*}[^}]*$/gim;
-            var absoluteUrlRegExp = /^https?:/;
 
             function postResult (result) {
                 self.postMessage(result);
@@ -36,7 +35,7 @@
                     invokeFn,
                     invokeArguments,
                     invokeResult;
-                
+
                 switch (commandObject.command.toLowerCase()) {
                     case "import":
                         importScripts.apply(null, commandObject.arguments);
@@ -65,11 +64,12 @@
 
     // Transform relative script URLs into absolute URLs
     function getScriptUrl(scriptPath) {
+        var absoluteUrlRegExp = /^https?:/;
         if (absoluteUrlRegExp.test(scriptPath)) {
             return scriptPath;
         }
 
-        return location.protocol + "//" + location.hostname + 
+        return location.protocol + "//" + location.hostname +
             (location.port && ":" + location.port) + "/" + scriptPath;
     }
 
